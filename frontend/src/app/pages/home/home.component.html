@@ -1,0 +1,300 @@
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-dark-900 via-primary-900 to-accent-900">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+  </div>
+
+  <div class="container-custom relative z-10 py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Hero Content -->
+      <div class="text-white space-y-8 animate-fade-in">
+        <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
+          <span class="w-2 h-2 bg-accent-500 rounded-full animate-pulse"></span>
+          <span class="text-sm font-medium">Türkiye'nin En Büyük Kuaför Platformu</span>
+        </div>
+
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight">
+          Stilinize Yakışan
+          <span class="block bg-gradient-to-r from-accent-400 to-gold-400 bg-clip-text text-transparent">
+            Kuaförü Bulun
+          </span>
+        </h1>
+
+        <p class="text-xl text-dark-300 leading-relaxed max-w-xl">
+          Binlerce profesyonel kuaför arasından size en uygun olanı seçin,
+          dakikalar içinde randevu alın ve tarzınızı yansıtın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a routerLink="/barbers" class="btn btn-primary btn-lg group">
+            Kuaförleri Keşfet
+            <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
+          <a routerLink="/register" class="btn btn-ghost-white btn-lg">
+            Ücretsiz Kayıt Ol
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-white/20">
+          <div *ngFor="let stat of stats" class="text-center">
+            <div class="text-3xl font-bold text-white">{{ stat.value }}</div>
+            <div class="text-sm text-dark-300 mt-1">{{ stat.label }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Image/Illustration -->
+      <div class="relative lg:block animate-fade-in-delayed">
+        <div class="relative">
+          <!-- Main Image Card -->
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
+            <img
+              src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800"
+              alt="Modern Barber Shop"
+              class="w-full h-[600px] object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent"></div>
+          </div>
+
+          <!-- Floating Card 1 -->
+          <div class="absolute -top-6 -right-6 bg-white rounded-xl shadow-glow p-4 animate-float">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-gradient-to-br from-accent-500 to-primary-500 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-bold text-dark-900">4.9/5.0</div>
+                <div class="text-sm text-dark-500">10K+ Değerlendirme</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Card 2 -->
+          <div class="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-glow p-4 animate-float-delayed">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-gradient-to-br from-gold-500 to-accent-500 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-bold text-dark-900">24/7</div>
+                <div class="text-sm text-dark-500">Online Randevu</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-20 bg-white">
+  <div class="container-custom">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">Özellikler</span>
+      <h2 class="text-4xl md:text-5xl font-display font-bold text-dark-900 mt-4">
+        Neden <span class="text-primary-600">BarberHub?</span>
+      </h2>
+      <p class="text-dark-600 text-lg mt-4">
+        Modern teknoloji ile geleneksel kuaförlük sanatını buluşturuyoruz
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div *ngFor="let feature of features" class="group">
+        <div class="card hover:shadow-glow transition-all duration-300 p-8 h-full group-hover:-translate-y-2">
+          <div class="w-14 h-14 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="feature.icon"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-dark-900 mb-3">{{ feature.title }}</h3>
+          <p class="text-dark-600">{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Barbers Section -->
+<section class="py-20 bg-dark-50">
+  <div class="container-custom">
+    <div class="flex justify-between items-end mb-12">
+      <div>
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">En Popüler</span>
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-dark-900 mt-2">
+          Öne Çıkan Kuaförler
+        </h2>
+      </div>
+      <a routerLink="/barbers" class="btn btn-ghost hidden md:inline-flex">
+        Tümünü Gör
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div *ngFor="let barber of featuredBarbers" class="card group hover:shadow-glow transition-all duration-300 overflow-hidden">
+        <div class="relative h-64 overflow-hidden">
+          <img
+            [src]="barber.image"
+            [alt]="barber.name"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div class="absolute top-4 right-4">
+            <div class="bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 flex items-center space-x-1">
+              <svg class="w-4 h-4 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+              <span class="font-bold text-dark-900">{{ barber.rating }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-dark-900 mb-1">{{ barber.name }}</h3>
+          <p class="text-primary-600 font-medium mb-3">{{ barber.specialty }}</p>
+          <div class="flex items-center justify-between text-sm text-dark-500">
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              </svg>
+              {{ barber.location }}
+            </div>
+            <span class="text-dark-400">{{ barber.reviewCount }} yorum</span>
+          </div>
+          <button class="btn btn-primary w-full mt-4">
+            Randevu Al
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-8 md:hidden">
+      <a routerLink="/barbers" class="btn btn-ghost">
+        Tümünü Gör
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-20 bg-white">
+  <div class="container-custom">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">Hizmetler</span>
+      <h2 class="text-4xl md:text-5xl font-display font-bold text-dark-900 mt-4">
+        Sunulan <span class="text-primary-600">Hizmetler</span>
+      </h2>
+      <p class="text-dark-600 text-lg mt-4">
+        Profesyonel kuaförlerimizden alabileceğiniz hizmetler
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div *ngFor="let service of services" class="card p-6 hover:shadow-glow transition-all duration-300 group hover:-translate-y-1">
+        <div class="w-12 h-12 bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="service.icon"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-dark-900 mb-2">{{ service.name }}</h3>
+        <div class="flex items-center justify-between text-sm text-dark-600 mb-4">
+          <span class="font-medium">{{ service.price }}</span>
+          <span class="text-dark-400">{{ service.duration }}</span>
+        </div>
+        <button class="text-primary-600 hover:text-primary-700 font-medium text-sm group-hover:translate-x-1 transition-transform inline-flex items-center">
+          Detaylar
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-20 bg-gradient-to-br from-primary-50 to-accent-50">
+  <div class="container-custom">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-primary-600 font-semibold text-sm uppercase tracking-wider">Müşteri Yorumları</span>
+      <h2 class="text-4xl md:text-5xl font-display font-bold text-dark-900 mt-4">
+        Müşterilerimiz <span class="text-primary-600">Ne Diyor?</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div *ngFor="let testimonial of testimonials" class="card p-8 hover:shadow-glow transition-all duration-300">
+        <!-- Rating Stars -->
+        <div class="flex space-x-1 mb-4">
+          <svg *ngFor="let star of getStarArray(testimonial.rating)" class="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+        </div>
+
+        <!-- Testimonial Content -->
+        <p class="text-dark-700 leading-relaxed mb-6 italic">
+          "{{ testimonial.content }}"
+        </p>
+
+        <!-- Author -->
+        <div class="flex items-center space-x-3">
+          <img
+            [src]="testimonial.image"
+            [alt]="testimonial.name"
+            class="w-12 h-12 rounded-full object-cover border-2 border-primary-200"
+          />
+          <div>
+            <div class="font-semibold text-dark-900">{{ testimonial.name }}</div>
+            <div class="text-sm text-dark-500">{{ testimonial.role }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-gradient-to-r from-primary-600 via-accent-600 to-primary-600 relative overflow-hidden">
+  <!-- Animated Background -->
+  <div class="absolute inset-0 opacity-20">
+    <div class="absolute inset-0 bg-shimmer"></div>
+  </div>
+
+  <div class="container-custom relative z-10">
+    <div class="max-w-4xl mx-auto text-center text-white">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
+        Stilinize Yeni Bir Başlangıç Yapın
+      </h2>
+      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+        Hemen ücretsiz kaydolun, en iyi kuaförleri keşfedin ve dakikalar içinde randevu alın.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a routerLink="/register" class="btn bg-white text-primary-600 hover:bg-dark-50 btn-lg">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+          </svg>
+          Hemen Başla
+        </a>
+        <a routerLink="/barbers" class="btn btn-ghost-white btn-lg">
+          Kuaförleri İncele
+        </a>
+      </div>
+      <p class="text-sm text-white/70 mt-6">
+        Kredi kartı gerektirmez • 500+ profesyonel kuaför • Anında randevu
+      </p>
+    </div>
+  </div>
+</section>

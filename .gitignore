@@ -1,0 +1,78 @@
+# ============================================
+# Security - Secrets and Environment Files
+# ============================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+secrets/
+credentials/
+
+# ============================================
+# Backend (Java/Spring Boot)
+# ============================================
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.log.*
+hs_err_pid*
+
+# ============================================
+# Frontend (Angular/Node)
+# ============================================
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.nx/cache
+*.tsbuildinfo
+
+# ============================================
+# IDEs and Editors
+# ============================================
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+Thumbs.db
+
+# ============================================
+# Database
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+postgres_data/
+h2_data/
+
+# ============================================
+# Docker
+# ============================================
+docker-compose.override.yml
+
+# ============================================
+# Operating System
+# ============================================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ============================================
+# Temporary files
+# ============================================
+*.tmp
+*.temp
+*.swp
+*.swo
+*~

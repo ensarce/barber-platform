@@ -1,0 +1,28 @@
+# Production Profile Configuration
+spring:
+  # Production - PostgreSQL Database
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  h2:
+    console:
+      enabled: false  # CRITICAL: H2 console must be disabled in production
+
+  jpa:
+    hibernate:
+      ddl-auto: validate  # NEVER use create-drop in production
+    show-sql: false  # Disable SQL logging in production
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+
+# Production logging - errors only
+logging:
+  level:
+    com.barber: INFO
+    org.hibernate.SQL: WARN
+    org.springframework.web: WARN
