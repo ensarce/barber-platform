@@ -6,7 +6,7 @@
     "rewrites": [
         {
             "source": "/api/:path*",
-            "destination": "https://kuaforbul-backend.onrender.com/api/:path*"
+            "destination": "https://barber-platform.onrender.com/api/:path*"
         }
     ],
     "headers": [
