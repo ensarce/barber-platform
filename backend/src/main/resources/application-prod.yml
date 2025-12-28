@@ -1,11 +1,13 @@
 # Production Profile Configuration
 spring:
-  # Production - PostgreSQL Database
+  # Production - PostgreSQL Database (Supabase)
   datasource:
-    url: ${DB_URL}
+    url: ${DB_URL}?sslmode=require
     username: ${DB_USER}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 5
 
   h2:
     console:
@@ -13,14 +15,14 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: validate  # NEVER use create-drop in production
-    show-sql: false  # Disable SQL logging in production
+      ddl-auto: update  # Creates tables on first run, then updates
+    show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: false
 
-# Production logging - errors only
+# Production logging
 logging:
   level:
     com.barber: INFO
