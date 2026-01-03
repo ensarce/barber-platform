@@ -18,13 +18,15 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
           <nav class="nav">
             <!-- Logo -->
             <a routerLink="/" class="logo">
-              <svg class="logo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M6 5v14M18 5v14M6 12h12"/>
-                <circle cx="6" cy="5" r="2"/>
-                <circle cx="18" cy="5" r="2"/>
-                <circle cx="6" cy="19" r="2"/>
-                <circle cx="18" cy="19" r="2"/>
-              </svg>
+              <div class="logo__icon-wrap">
+                <svg class="logo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 5v14M18 5v14M6 12h12"/>
+                  <circle cx="6" cy="5" r="2"/>
+                  <circle cx="18" cy="5" r="2"/>
+                  <circle cx="6" cy="19" r="2"/>
+                  <circle cx="18" cy="19" r="2"/>
+                </svg>
+              </div>
               <span class="logo__text">Kuaför<span>Bul</span></span>
             </a>
 
@@ -41,25 +43,48 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
                   Randevularım
                 </a>
                 @if (authService.isBarber()) {
-                  <a routerLink="/barber-panel" routerLinkActive="active" class="nav__link nav__link--accent">
-                    ✂️ Kuaför Paneli
+                  <a routerLink="/barber-panel" routerLinkActive="active" class="nav__link nav__link--barber">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M6 5v14M18 5v14M6 12h12"/>
+                      <circle cx="6" cy="5" r="1.5"/><circle cx="18" cy="5" r="1.5"/>
+                    </svg>
+                    Kuaför Paneli
                   </a>
                 }
                 @if (authService.isAdmin()) {
-                  <a routerLink="/admin" routerLinkActive="active" class="nav__link nav__link--accent">
-                    ⚙️ Admin
+                  <a routerLink="/admin" routerLinkActive="active" class="nav__link nav__link--admin">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+                    </svg>
+                    Admin
                   </a>
                 }
               }
             </div>
 
-            <!-- Desktop Auth -->
+            <!-- Desktop Auth + Quick Booking -->
             <div class="nav__auth hide-mobile">
               @if (authService.isLoggedIn()) {
-                <span class="nav__user">{{ authService.user()?.name }}</span>
-                <button class="btn btn--ghost btn--sm" (click)="authService.logout()">
-                  Çıkış
-                </button>
+                @if (authService.isCustomer()) {
+                  <a routerLink="/barbers" class="btn btn--gold btn--sm quick-book-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/>
+                      <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    Hızlı Randevu
+                  </a>
+                }
+                <div class="nav__user-menu">
+                  <span class="nav__user">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    {{ authService.user()?.name }}
+                  </span>
+                  <button class="btn btn--ghost btn--sm" (click)="authService.logout()">
+                    Çıkış
+                  </button>
+                </div>
               } @else {
                 <a routerLink="/login" class="btn btn--ghost btn--sm">Giriş Yap</a>
                 <a routerLink="/register" class="btn btn--primary btn--sm">Kayıt Ol</a>
@@ -101,16 +126,21 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
             </a>
             
             @if (authService.isLoggedIn()) {
+              @if (authService.isCustomer()) {
+                <a routerLink="/barbers" (click)="closeMenu()" class="mobile-menu__quick-book">
+                  📅 Hızlı Randevu Al
+                </a>
+              }
               <a routerLink="/appointments" (click)="closeMenu()" class="mobile-menu__link">
-                📅 Randevularım
+                📋 Randevularım
               </a>
               @if (authService.isBarber()) {
-                <a routerLink="/barber-panel" (click)="closeMenu()" class="mobile-menu__link mobile-menu__link--accent">
+                <a routerLink="/barber-panel" (click)="closeMenu()" class="mobile-menu__link mobile-menu__link--barber">
                   ✂️ Kuaför Paneli
                 </a>
               }
               @if (authService.isAdmin()) {
-                <a routerLink="/admin" (click)="closeMenu()" class="mobile-menu__link mobile-menu__link--accent">
+                <a routerLink="/admin" (click)="closeMenu()" class="mobile-menu__link mobile-menu__link--admin">
                   ⚙️ Admin Paneli
                 </a>
               }
@@ -192,7 +222,7 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
     }
 
     /* ================================
-       HEADER - Solid Background
+       HEADER - Premium Design
        ================================ */
     .header {
       position: fixed;
@@ -201,15 +231,15 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
       right: 0;
       z-index: 100;
       height: var(--header-height);
-      background: #ffffff;
-      border-bottom: 1px solid var(--gray-200);
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.2);
       transition: all var(--transition-base);
     }
 
     .header.scrolled {
-      background: #ffffff;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      border-bottom-color: transparent;
+      background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(201, 162, 39, 0.1);
+      border-bottom-color: rgba(201, 162, 39, 0.4);
     }
 
     .nav {
@@ -223,54 +253,112 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.625rem;
-      font-size: 1.375rem;
-      font-weight: 600;
-      color: var(--gray-800);
+      gap: 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .logo__icon-wrap {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #c9a227 0%, #d4b847 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
     }
 
     .logo__icon {
-      width: 28px;
-      height: 28px;
-      color: var(--primary);
+      width: 24px;
+      height: 24px;
+      color: #1a1a1a;
+    }
+
+    .logo__text {
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -0.5px;
     }
 
     .logo__text span {
-      color: var(--primary);
+      color: #c9a227;
     }
 
     /* Nav Links */
     .nav__links {
       display: flex;
       align-items: center;
-      gap: 2.5rem;
+      gap: 2rem;
     }
 
     .nav__link {
       font-weight: 500;
       font-size: 0.9375rem;
-      color: var(--gray-600);
+      color: rgba(255, 255, 255, 0.8);
       padding: 0.5rem 0;
       position: relative;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .nav__link:hover,
+    .nav__link:hover {
+      color: #ffffff;
+    }
+
     .nav__link.active {
-      color: var(--primary);
+      color: #c9a227;
     }
 
     .nav__link.active::after {
       content: '';
       position: absolute;
-      bottom: -2px;
+      bottom: -4px;
       left: 0;
       right: 0;
       height: 2px;
-      background: var(--primary);
+      background: linear-gradient(90deg, #c9a227, #d4b847);
       border-radius: 1px;
     }
 
+    .nav__link--barber {
+      background: linear-gradient(135deg, rgba(139, 0, 0, 0.2), rgba(139, 0, 0, 0.1));
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(139, 0, 0, 0.3);
+      color: #ff6b6b;
+    }
+
+    .nav__link--barber:hover {
+      background: linear-gradient(135deg, rgba(139, 0, 0, 0.3), rgba(139, 0, 0, 0.2));
+      color: #ff8a8a;
+      border-color: rgba(139, 0, 0, 0.5);
+    }
+
+    .nav__link--admin {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #60a5fa;
+    }
+
+    .nav__link--admin:hover {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.2));
+      color: #93c5fd;
+      border-color: rgba(59, 130, 246, 0.5);
+    }
+
     .nav__auth {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav__user-menu {
       display: flex;
       align-items: center;
       gap: 0.75rem;
@@ -279,9 +367,70 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
     .nav__user {
       font-weight: 500;
       font-size: 0.9375rem;
-      color: var(--gray-700);
+      color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       padding-right: 0.75rem;
-      border-right: 1px solid var(--gray-200);
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .nav__user svg {
+      color: #c9a227;
+    }
+
+    /* Quick Booking Button */
+    .quick-book-btn {
+      animation: pulse-glow 2s infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 5px rgba(201, 162, 39, 0.5), 0 0 10px rgba(201, 162, 39, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 15px rgba(201, 162, 39, 0.8), 0 0 25px rgba(201, 162, 39, 0.5);
+      }
+    }
+
+    .btn--gold {
+      background: linear-gradient(135deg, #c9a227 0%, #d4b847 100%);
+      color: #1a1a1a;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn--gold:hover {
+      background: linear-gradient(135deg, #d4b847 0%, #e5c85a 100%);
+      transform: translateY(-1px);
+    }
+
+    /* Update ghost button for dark header */
+    .header .btn--ghost {
+      color: rgba(255, 255, 255, 0.9);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .header .btn--ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+      color: #ffffff;
+    }
+
+    /* Update primary button for dark header */
+    .header .btn--primary {
+      background: linear-gradient(135deg, #8b0000 0%, #a52a2a 100%);
+      border: none;
+    }
+
+    .header .btn--primary:hover {
+      background: linear-gradient(135deg, #a52a2a 0%, #b33c3c 100%);
     }
 
     /* Hamburger */
