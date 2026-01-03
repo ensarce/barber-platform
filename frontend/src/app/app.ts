@@ -36,6 +36,21 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
               <a routerLink="/barbers" routerLinkActive="active" class="nav__link">
                 Kuaförler
               </a>
+              @if (authService.isLoggedIn()) {
+                <a routerLink="/appointments" routerLinkActive="active" class="nav__link">
+                  Randevularım
+                </a>
+                @if (authService.isBarber()) {
+                  <a routerLink="/barber-panel" routerLinkActive="active" class="nav__link nav__link--accent">
+                    ✂️ Kuaför Paneli
+                  </a>
+                }
+                @if (authService.isAdmin()) {
+                  <a routerLink="/admin" routerLinkActive="active" class="nav__link nav__link--accent">
+                    ⚙️ Admin
+                  </a>
+                }
+              }
             </div>
 
             <!-- Desktop Auth -->
@@ -86,6 +101,19 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
             </a>
             
             @if (authService.isLoggedIn()) {
+              <a routerLink="/appointments" (click)="closeMenu()" class="mobile-menu__link">
+                📅 Randevularım
+              </a>
+              @if (authService.isBarber()) {
+                <a routerLink="/barber-panel" (click)="closeMenu()" class="mobile-menu__link mobile-menu__link--accent">
+                  ✂️ Kuaför Paneli
+                </a>
+              }
+              @if (authService.isAdmin()) {
+                <a routerLink="/admin" (click)="closeMenu()" class="mobile-menu__link mobile-menu__link--accent">
+                  ⚙️ Admin Paneli
+                </a>
+              }
               <div class="mobile-menu__user">
                 <span>{{ authService.user()?.name }}</span>
                 <button class="btn btn--primary btn--full" (click)="logout()">

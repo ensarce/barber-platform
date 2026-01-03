@@ -27,6 +27,21 @@ export const routes: Routes = [
     title: 'Kayıt Ol - KuaförBul'
   },
   {
+    path: 'appointments',
+    loadComponent: () => import('./features/appointments/my-appointments/my-appointments.component').then(m => m.MyAppointmentsComponent),
+    title: 'Randevularım - KuaförBul'
+  },
+  {
+    path: 'barber-panel',
+    loadComponent: () => import('./features/barber-panel/barber-panel.component').then(m => m.BarberPanelComponent),
+    title: 'Kuaför Paneli - KuaförBul'
+  },
+  {
+    path: 'admin',
+    loadComponent: () => import('./features/admin/admin-panel.component').then(m => m.AdminPanelComponent),
+    title: 'Admin Paneli - KuaförBul'
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
