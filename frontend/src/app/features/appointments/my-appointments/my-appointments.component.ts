@@ -13,7 +13,7 @@ import { Appointment } from '../../../core/models/appointment.model';
     <div class="container">
       <div class="page-header">
         <h1>Randevularım</h1>
-        <a routerLink="/kuaforler" class="btn btn--primary">+ Yeni Randevu</a>
+        <a routerLink="/barbers" class="btn btn--primary">+ Yeni Randevu</a>
       </div>
       
       @if (isLoading()) {
@@ -27,7 +27,7 @@ import { Appointment } from '../../../core/models/appointment.model';
           <span class="empty-state__icon">📅</span>
           <h3>Henüz randevunuz yok</h3>
           <p>Kuaförleri keşfedin ve ilk randevunuzu oluşturun!</p>
-          <a routerLink="/kuaforler" class="btn btn--primary">Kuaför Ara</a>
+          <a routerLink="/barbers" class="btn btn--primary">Kuaför Ara</a>
         </div>
       }
       
