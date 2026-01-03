@@ -447,7 +447,7 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
     .hamburger span {
       width: 100%;
       height: 2px;
-      background: var(--gray-600);
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 2px;
       transition: all var(--transition-base);
     }
@@ -543,6 +543,41 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
       display: flex;
       flex-direction: column;
       gap: 0.625rem;
+    }
+
+    /* Mobile Menu Quick Book Button */
+    .mobile-menu__quick-book {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      background: linear-gradient(135deg, #c9a227 0%, #d4b847 100%);
+      color: #1a1a1a;
+      font-weight: 600;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+    }
+
+    .mobile-menu__quick-book:hover {
+      background: linear-gradient(135deg, #d4b847 0%, #e5c85a 100%);
+      color: #1a1a1a;
+    }
+
+    /* Mobile Menu Role-Specific Links */
+    .mobile-menu__link--barber {
+      background: linear-gradient(135deg, rgba(139, 0, 0, 0.08), rgba(139, 0, 0, 0.04));
+      color: #8b0000 !important;
+      border-left: 3px solid #8b0000;
+      margin: 0.5rem 0;
+    }
+
+    .mobile-menu__link--admin {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.04));
+      color: #3b82f6 !important;
+      border-left: 3px solid #3b82f6;
+      margin: 0.5rem 0;
     }
 
     /* ================================

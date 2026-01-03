@@ -113,9 +113,14 @@ import { AuthService } from '../../../core/services/auth.service';
                 required>
             </div>
 
-            <label class="checkbox mb-4">
+            <label class="custom-checkbox mb-4">
               <input type="checkbox" [(ngModel)]="acceptTerms" name="acceptTerms" required>
-              <span>
+              <span class="checkbox-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span class="checkbox-label">
                 <a href="#" class="auth-link">Kullanım koşullarını</a> kabul ediyorum
               </span>
             </label>

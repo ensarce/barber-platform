@@ -856,16 +856,125 @@ $breakpoint-xl: 1200px;
   .btn,
   button,
   a,
-  select,
-  input[type="checkbox"],
-  input[type="radio"] {
+  select {
     min-height: 44px;
-    min-width: 44px;
+  }
+}
+
+// Custom Checkbox Styles
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+
+  input[type="checkbox"] {
+    display: none;
   }
 
-  input[type="checkbox"],
-  input[type="radio"] {
-    transform: scale(1.2);
-    margin-right: 0.5rem;
+  .checkbox-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    background: var(--surface);
+    flex-shrink: 0;
+
+    svg {
+      width: 12px;
+      height: 12px;
+      color: white;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.2s ease;
+    }
+  }
+
+  input[type="checkbox"]:checked+.checkbox-box {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    border-color: var(--accent);
+
+    svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  input[type="checkbox"]:focus+.checkbox-box {
+    box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.2);
+  }
+
+  .checkbox-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+}
+
+// Toggle Switch (for working hours)
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .toggle-track {
+    width: 44px;
+    height: 24px;
+    background: var(--border);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  input[type="checkbox"]:checked+.toggle-track {
+    background: linear-gradient(135deg, var(--success), #0d9668);
+
+    &::after {
+      transform: translateX(20px);
+    }
+  }
+
+  .toggle-label {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+}
+
+// Card Shadow Enhancement
+.card-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.card-shadow-hover {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    transform: translateY(-4px);
   }
 }
