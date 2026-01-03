@@ -65,7 +65,32 @@ public class BarberService {
         
         profile = barberProfileRepository.save(profile);
         
+        // Create default working hours for the new barber
+        createDefaultWorkingHours(profile);
+        
         return mapToDetailResponse(profile);
+    }
+    
+    /**
+     * Creates default working hours for a new barber profile
+     * Monday-Saturday: 09:00-19:00 (open)
+     * Sunday: closed
+     */
+    private void createDefaultWorkingHours(BarberProfile profile) {
+        java.time.LocalTime defaultStart = java.time.LocalTime.of(9, 0);
+        java.time.LocalTime defaultEnd = java.time.LocalTime.of(19, 0);
+        
+        for (DayOfWeek day : DayOfWeek.values()) {
+            WorkingHours wh = WorkingHours.builder()
+                .barberProfile(profile)
+                .dayOfWeek(day)
+                .startTime(day == DayOfWeek.SUNDAY ? null : defaultStart)
+                .endTime(day == DayOfWeek.SUNDAY ? null : defaultEnd)
+                .isClosed(day == DayOfWeek.SUNDAY)
+                .build();
+            
+            workingHoursRepository.save(wh);
+        }
     }
     
     @Transactional
