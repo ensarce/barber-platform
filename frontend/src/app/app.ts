@@ -104,58 +104,105 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
       <!-- Mobile Menu -->
       @if (menuOpen()) {
         <div class="mobile-overlay" (click)="closeMenu()"></div>
-        <aside class="mobile-menu animate-slideUp">
+        <aside class="mobile-menu">
           <div class="mobile-menu__header">
-            <svg class="logo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M6 5v14M18 5v14M6 12h12"/>
-              <circle cx="6" cy="5" r="2"/>
-              <circle cx="18" cy="5" r="2"/>
-              <circle cx="6" cy="19" r="2"/>
-              <circle cx="18" cy="19" r="2"/>
-            </svg>
-            <span class="logo__text">Kuaför<span>Bul</span></span>
-            <button class="mobile-menu__close" (click)="closeMenu()">×</button>
+            <div class="mobile-menu__brand">
+              <div class="mobile-menu__logo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 5v14M18 5v14M6 12h12"/>
+                  <circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/>
+                  <circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/>
+                </svg>
+              </div>
+              <span class="mobile-menu__logo-text">Kuaför<span>Bul</span></span>
+            </div>
+            <button class="mobile-menu__close" (click)="closeMenu()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
           </div>
           
           <nav class="mobile-menu__nav">
             <a routerLink="/" (click)="closeMenu()" class="mobile-menu__link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
               Ana Sayfa
             </a>
             <a routerLink="/barbers" (click)="closeMenu()" class="mobile-menu__link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              </svg>
               Kuaförler
             </a>
             
             @if (authService.isLoggedIn()) {
               @if (authService.isCustomer()) {
                 <a routerLink="/barbers" (click)="closeMenu()" class="mobile-menu__quick-book">
-                  📅 Hızlı Randevu Al
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/><path d="M9 16l2 2 4-4"/>
+                  </svg>
+                  Hızlı Randevu Al
                 </a>
               }
               <a routerLink="/appointments" (click)="closeMenu()" class="mobile-menu__link">
-                📋 Randevularım
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Randevularım
               </a>
               @if (authService.isBarber()) {
                 <a routerLink="/barber-panel" (click)="closeMenu()" class="mobile-menu__link mobile-menu__link--barber">
-                  ✂️ Kuaför Paneli
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 5v14M18 5v14M6 12h12"/>
+                    <circle cx="6" cy="5" r="1.5"/><circle cx="18" cy="5" r="1.5"/>
+                  </svg>
+                  Kuaför Paneli
                 </a>
               }
               @if (authService.isAdmin()) {
                 <a routerLink="/admin" (click)="closeMenu()" class="mobile-menu__link mobile-menu__link--admin">
-                  ⚙️ Admin Paneli
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+                  </svg>
+                  Admin Paneli
                 </a>
               }
+              
+              <div class="mobile-menu__divider"></div>
+              
               <div class="mobile-menu__user">
-                <span>{{ authService.user()?.name }}</span>
-                <button class="btn btn--primary btn--full" (click)="logout()">
+                <div class="mobile-menu__user-info">
+                  <div class="mobile-menu__avatar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                      <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                  </div>
+                  <span>{{ authService.user()?.name }}</span>
+                </div>
+                <button class="mobile-menu__logout" (click)="logout()">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+                    <polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+                  </svg>
                   Çıkış Yap
                 </button>
               </div>
             } @else {
+              <div class="mobile-menu__divider"></div>
               <div class="mobile-menu__auth">
-                <a routerLink="/login" (click)="closeMenu()" class="btn btn--secondary btn--full">
+                <a routerLink="/login" (click)="closeMenu()" class="mobile-menu__auth-btn mobile-menu__auth-btn--outline">
                   Giriş Yap
                 </a>
-                <a routerLink="/register" (click)="closeMenu()" class="btn btn--primary btn--full">
+                <a routerLink="/register" (click)="closeMenu()" class="mobile-menu__auth-btn mobile-menu__auth-btn--primary">
                   Kayıt Ol
                 </a>
               </div>
@@ -465,13 +512,20 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
     }
 
     /* ================================
-       MOBILE MENU
+       MOBILE MENU - Premium Dark Theme
        ================================ */
     .mobile-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
       z-index: 200;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     .mobile-menu {
@@ -479,105 +533,285 @@ import { ToastContainerComponent } from './core/components/toast-container.compo
       top: 0;
       right: 0;
       width: 85%;
-      max-width: 300px;
+      max-width: 320px;
       height: 100vh;
-      background: var(--white);
+      background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
       z-index: 201;
-      box-shadow: var(--shadow-xl);
+      box-shadow: -8px 0 30px rgba(0, 0, 0, 0.5);
       overflow-y: auto;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
     }
 
     .mobile-menu__header {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 1.25rem;
-      border-bottom: 1px solid var(--gray-100);
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+      background: rgba(0, 0, 0, 0.2);
     }
 
-    .mobile-menu__header .logo__text {
-      flex: 1;
-      font-size: 1.125rem;
+    .mobile-menu__brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .mobile-menu__logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #c9a227 0%, #d4b847 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+    }
+
+    .mobile-menu__logo-icon svg {
+      width: 20px;
+      height: 20px;
+      color: #1a1a1a;
+    }
+
+    .mobile-menu__logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .mobile-menu__logo-text span {
+      color: #c9a227;
     }
 
     .mobile-menu__close {
-      font-size: 1.5rem;
-      color: var(--gray-400);
-      line-height: 1;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-menu__close svg {
+      width: 20px;
+      height: 20px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .mobile-menu__close:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .mobile-menu__nav {
-      padding: 1rem;
+      padding: 1rem 1rem 2rem;
     }
 
     .mobile-menu__link {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
       padding: 0.875rem 1rem;
       font-size: 0.9375rem;
       font-weight: 500;
-      color: var(--gray-700);
-      border-radius: var(--radius-md);
+      color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      margin-bottom: 0.25rem;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-menu__link svg {
+      width: 20px;
+      height: 20px;
+      color: rgba(255, 255, 255, 0.6);
+      flex-shrink: 0;
     }
 
     .mobile-menu__link:hover {
-      background: var(--gray-50);
-      color: var(--primary);
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
     }
 
-    .mobile-menu__user,
-    .mobile-menu__auth {
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--gray-100);
+    .mobile-menu__link:hover svg {
+      color: #c9a227;
     }
 
-    .mobile-menu__user span {
-      display: block;
-      font-weight: 500;
-      color: var(--gray-700);
-      margin-bottom: 0.75rem;
-      padding: 0 1rem;
+    .mobile-menu__divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.3), transparent);
+      margin: 1rem 0;
     }
 
-    .mobile-menu__auth {
-      display: flex;
-      flex-direction: column;
-      gap: 0.625rem;
-    }
-
-    /* Mobile Menu Quick Book Button */
+    /* Quick Book Button */
     .mobile-menu__quick-book {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 1rem;
-      margin: 0.5rem 0;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin: 0.75rem 0;
       background: linear-gradient(135deg, #c9a227 0%, #d4b847 100%);
       color: #1a1a1a;
       font-weight: 600;
-      border-radius: var(--radius-lg);
-      box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+      font-size: 0.9375rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+      transition: all 0.2s ease;
     }
 
-    .mobile-menu__quick-book:hover {
-      background: linear-gradient(135deg, #d4b847 0%, #e5c85a 100%);
+    .mobile-menu__quick-book svg {
+      width: 20px;
+      height: 20px;
       color: #1a1a1a;
     }
 
-    /* Mobile Menu Role-Specific Links */
+    .mobile-menu__quick-book:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 162, 39, 0.5);
+      color: #1a1a1a;
+    }
+
+    /* Role-Specific Links */
     .mobile-menu__link--barber {
-      background: linear-gradient(135deg, rgba(139, 0, 0, 0.08), rgba(139, 0, 0, 0.04));
-      color: #8b0000 !important;
-      border-left: 3px solid #8b0000;
-      margin: 0.5rem 0;
+      background: rgba(139, 0, 0, 0.15);
+      border: 1px solid rgba(139, 0, 0, 0.3);
+      color: #ff8a8a !important;
+    }
+
+    .mobile-menu__link--barber svg {
+      color: #ff6b6b;
+    }
+
+    .mobile-menu__link--barber:hover {
+      background: rgba(139, 0, 0, 0.25);
     }
 
     .mobile-menu__link--admin {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.04));
-      color: #3b82f6 !important;
-      border-left: 3px solid #3b82f6;
-      margin: 0.5rem 0;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #93c5fd !important;
+    }
+
+    .mobile-menu__link--admin svg {
+      color: #60a5fa;
+    }
+
+    .mobile-menu__link--admin:hover {
+      background: rgba(59, 130, 246, 0.25);
+    }
+
+    /* User Section */
+    .mobile-menu__user {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      margin-top: 0.5rem;
+    }
+
+    .mobile-menu__user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .mobile-menu__avatar {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #c9a227 0%, #d4b847 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-menu__avatar svg {
+      width: 20px;
+      height: 20px;
+      color: #1a1a1a;
+    }
+
+    .mobile-menu__user-info span {
+      font-weight: 600;
+      color: #ffffff;
+      font-size: 0.9375rem;
+    }
+
+    .mobile-menu__logout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.75rem;
+      background: rgba(139, 0, 0, 0.2);
+      border: 1px solid rgba(139, 0, 0, 0.4);
+      color: #ff8a8a;
+      font-weight: 500;
+      font-size: 0.875rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-menu__logout svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .mobile-menu__logout:hover {
+      background: rgba(139, 0, 0, 0.3);
+    }
+
+    /* Auth Buttons */
+    .mobile-menu__auth {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0.5rem;
+    }
+
+    .mobile-menu__auth-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 1.25rem;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-menu__auth-btn--outline {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+    }
+
+    .mobile-menu__auth-btn--outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+      color: #ffffff;
+    }
+
+    .mobile-menu__auth-btn--primary {
+      background: linear-gradient(135deg, #8b0000 0%, #a52a2a 100%);
+      border: none;
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
+    }
+
+    .mobile-menu__auth-btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 0, 0, 0.5);
+      color: #ffffff;
     }
 
     /* ================================
